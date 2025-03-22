@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Search, User, ShoppingCart, Heart, Menu, X } from 'lucide-react';
 import logo from '../assets/usStorelogo.png';
 
@@ -7,7 +7,6 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileShopOpen, setIsMobileShopOpen] = useState(false);
 
-  // Navigation links data
   const navLinks = [
     { path: "/", label: "Home" },
     { path: "/shop", label: "Shop" },
@@ -17,7 +16,6 @@ const Navbar = () => {
     { path: "/contact-us", label: "Contact Us" }
   ];
 
-  // Shop categories
   const shopCategories = [
     { path: "/category1", label: "Category 1" },
     { path: "/category2", label: "Category 2" },
@@ -26,21 +24,18 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Announcement Bar */}
       <div className="w-full bg-gray-100 text-black text-center py-1 text-sm font-medium">
         Summer Sale Discount Off 50%! <span className="font-bold">SHOP NOW</span>
       </div>
       
       <nav className="bg-white shadow-sm py-[1px] w-full relative z-50">
         <div className="container mx-auto flex items-center justify-around px-4">
-          {/* Logo */}
           <div className="flex items-center">
             <a href="/">
               <img src={logo} alt="USStores" className="w-26 h-26" />
             </a>
           </div>
 
-          {/* Desktop Navigation Links */}
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link, index) => (
               link.label === "Shop" ? (
@@ -57,7 +52,6 @@ const Navbar = () => {
                       {link.label}
                       <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-800 group-hover:w-full transition-all duration-300 ease-in-out"></span>
                     </span>
-                    {/* Custom SVG for dark triangular arrow */}
                     <svg
                       className="w-4 h-4 ml-1"
                       viewBox="0 0 20 20"
@@ -101,7 +95,6 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Icons */}
           <div className="flex items-center space-x-4">
             <button className="group">
               <Search size={20} className="group-hover:text-blue-800 transition-colors duration-300" />
@@ -122,7 +115,6 @@ const Navbar = () => {
               </span>
             </button>
 
-            {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="md:hidden group"
@@ -137,7 +129,6 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-md z-50 border-t border-gray-100">
             <div className="py-1 px-4">
@@ -152,7 +143,6 @@ const Navbar = () => {
                         {link.label}
                         <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-800 group-hover:w-full transition-all duration-300 ease-in-out"></span>
                       </span>
-                      {/* Custom SVG for dark triangular arrow */}
                       <svg
                         className={`w-5 h-5 transition-transform ${isMobileShopOpen ? 'rotate-180' : ''}`}
                         viewBox="0 0 20 20"
